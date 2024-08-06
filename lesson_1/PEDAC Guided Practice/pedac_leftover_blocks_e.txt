@@ -1,0 +1,22 @@
+"""
+You are provided with the following test cases for this problem.
+
+# Comments show expected return values
+print(calculate_leftover_blocks(0) == 0)  # True
+print(calculate_leftover_blocks(1) == 0)  # True
+print(calculate_leftover_blocks(2) == 1)  # True
+print(calculate_leftover_blocks(4) == 3)  # True
+print(calculate_leftover_blocks(5) == 0)  # True
+print(calculate_leftover_blocks(6) == 1)  # True
+print(calculate_leftover_blocks(14) == 0) # True
+
+Regarding your initial mental model and questions from Step 1, make some notes about the test cases. Do the test cases confirm or refute different elements of your original analysis and mental mode? Do they answer any of the questions that you had, or do they perhaps raise further questions?
+"""
+
+# Comments show answers to my original questions
+Questions:
+    - Are available blocks always an integer? # Yes
+    - What do I return if no available blocks are provided? 0? # Yes
+    - What do I return if there are no leftover blocks? 0? # Yes
+
+Test cases confirm my original analysis and mental model.

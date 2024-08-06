@@ -1,0 +1,34 @@
+"""
+PROBLEM:
+
+Given a string, write a function `palindrome_substrings` which returns
+all the palindromic substrings of the string that are 2 or more characters
+long. Palindrome detection should be case-sensitive.
+"""
+
+"""
+input: string
+output: list
+rules:
+    Explicit requirements:
+      - Palindomes must be 2 or more characters long.
+      - Palindromes are case sensitive. ("Aba" is not a palindrome, "AA" is)
+
+    Implicit requirements:
+      - If the string is an empty string, the result is an empty list.
+      - If no palindromes are found then the result is an empty list.
+
+Is the input always a string?
+Can we have duplicates? Would the string "iliabcili" return ["ili", "ili"]
+"""
+
+
+
+# Test cases:
+
+# Comments show expected return values
+palindrome_substrings("abcddcbA")   # ["bcddcb", "cddc", "dd"]
+palindrome_substrings("palindrome") # []
+palindrome_substrings("")           # []
+palindrome_substrings("repaper")    # ['repaper', 'epape', 'pap']
+palindrome_substrings("supercalifragilisticexpialidocious") # ["ili"]

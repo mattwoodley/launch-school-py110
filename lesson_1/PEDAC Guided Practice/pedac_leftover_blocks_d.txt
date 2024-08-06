@@ -1,0 +1,6 @@
+"""
+For this step, use your analysis so far to make notes regarding whether you might need to use any particular data structures as part of your solution. If so, make notes on which ones.
+"""
+
+Could potentially represent the layers of blocks as a nested list,
+however, this might not be necessary given the problem provided.

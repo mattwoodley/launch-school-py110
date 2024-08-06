@@ -1,0 +1,155 @@
+"""
+Leftover Blocks
+
+You have a number of building blocks that can be used to build a valid
+structure. There are certain rules about what determines a valid structure:
+
+    The building blocks are cubes
+    The structure is built in layers
+    The top layer is a single block
+    A block in an upper layer must be supported by four blocks in a lower layer
+    A block in a lower layer can support more than one block in an upper layer
+    You cannot leave gaps between blocks
+
+Write a program that, given the number of available blocks, calculates the
+number of blocks left over after building the tallest possible valid structure
+
+Tasks
+
+You are provided with the problem description above.
+Your tasks for this step are:
+
+    Make notes of your mental model for the problem, including:
+        inputs and outputs.
+        explicit and implicit rules.
+    Write a list of clarifying questions for anything that isn't clear.
+"""
+
+"""
+input: integer of available blocks
+output: integer of leftover blocks
+rules:
+    Explicit:
+        - Upper layer blocks must be supported by four blocks on a lower layer
+        - Lower layer blocks can support more than one block in an upper layer
+        - No gaps between blocks
+        - Top layer is a single block
+    Implicit:
+        - Lower layers must contain more blocks than layers above it
+
+Questions:
+    - Are available blocks always an integer?
+    - What do I return if no available blocks are provided? 0?
+    - What do I return if there are no leftover blocks? 0? 
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+LAUNCH SCHOOL's VERSION
+
+Input/Output
+
+The input and output are stated in the description:
+Inputs and Outputs
+
+- Input: integer for a specific amount of blocks
+- Output: integer for left over blocks after building the tallest
+  possible valid structure
+
+Explicit Rules
+
+The format of the problem description is helpful. There's a list of explicit rules, as well as a link to a definition for a block. We can use all of this information to start forming our mental model. As a first step, we can re-state the explicit rules before attempting to identify the implicit rules:
+Explicit Rules
+
+- Structures are built with blocks:
+    - Blocks are cubes.
+    - Cubes are six-sided, have square faces, and have equal
+      lengths on all sides.
+- The top layer in the structure consists of a single block.
+- Upper layer blocks must be supported by four lower layer blocks.
+- Lower layer blocks can support more than one upper layer block.
+- Layers are solid structures -- there are no gaps between blocks.
+
+Some of these explicit rules are taken word for word from the problem description, and others are restated slightly or taken from the linked Wikipedia page. Either way, producing a list like this by using the problem description should be your goal.
+Implicit Rules
+
+The implicit rules are trickier, and this is where we need to start exploring the problem in more depth.
+
+One thing that may jump out is the idea of a valid structure. Since structures are built with layers, which suggests that layers can be valid or invalid. This may suggest a question that identifies the core of the problem: how do we know whether a layer is valid?
+
+When combined, the last three explicit rules might contain a clue. Let's focus in on those whilst also using what else we know.
+
+Given that the first layer is always one block, and we know that a block in an upper layer must be supported by four blocks in a lower layer, we can make an assertion that the second layer must contain at least four blocks. If we make an assumption that it contains exactly four blocks, we can also start to visualize a possible shape for the structure. Since the single upper block must be supported by four lower blocks, it's logical to arrange the four in a 2x2 square, with the upper block centered above it.
+
+So, we have some idea about the top two layers, but what about any additional layers beyond that? This is where the next-to-last rule comes into play. Since a block in a lower layer can support more than one block in an upper layer, this suggests an overlapping arrangement. An image may help us visualize this better:
+
+*3d image of a stack of cubes*
+Re-created image in 2d:
+  []
+ [][]
+[][][]
+
+The top block rests upon all four of the blocks on the middle row, and each block in the middle layer rests upon four bottom row blocks. The middle block of the bottom row is providing support to all four blocks of the middle row. The corner blocks on the bottom row each provide support to one block of the middle row, while the four remaining bottom row blocks each provide support to two middle row blocks. All of this is consistent with our rules.
+
+Using this image, we can see that the top row has one block, the middle row has 4 blocks, and the bottom row has 9. A pattern is emerging:
+
+    Layer 1 (top row): 1 block (1x1)
+    Layer 2 (middle row): 4 blocks (2x2)
+    Layer 3 (bottom row): 9 blocks (3x3)
+
+You might recognize the progressive layer sizes are square numbers, but even if you don't we can determine from the pattern that:
+
+    There is a direct relationship between the layer number and the number of blocks along each side of that layer.
+    The number of blocks in a layer is the number of blocks on one side of a layer multiplied by itself (i.e. the square of that number).
+
+We can make a note of these things as a list of implicit rules:
+Implicit rules
+
+- Layer number correlates with blocks in a layer:
+- The number of blocks in a layer is layer number * layer number.
+
+Questions
+
+We might also have questions about things that aren't covered in the explicit rules or that we haven't identified as implicit rules. For example, we know that a block in an upper layer must be supported by four blocks in a lower layer, but can we add more than four blocks in the lower layer? Could layer two have five, six, or more blocks? If this was the case, it would break the correlation between layer number and number of blocks.
+
+Another question might be around understanding part of the problem description:
+
+    calculates the number of blocks left over
+
+Does this imply there will always be blocks left over?
+
+Our questions list might look something like this:
+Questions
+
+- Is a lower layer valid if it has more blocks than it needs?
+- Will there always be left-over blocks?
+
+How these questions are answered depends on the context. In an interview situation you might be able to ask the interviewer for clarification. However, if you are provided with test cases, you should examine them first. They may contain the answers to your questions.
+"""
